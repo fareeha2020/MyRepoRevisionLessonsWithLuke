@@ -1,5 +1,5 @@
 let color = "blue";
-let price =19000;
+let price = 19000;
 if (price > 50000) {
     if (color == "red") {
         console.log(" yes  the price is over 50000 and the color is red :i like red cars");
@@ -14,11 +14,14 @@ else {
         } else if (color == "red") {
             console.log("the price is under 50000 but over 10000 and the color is red: i like red cars and this one is bargain");
         }
+        else{
+            console.log("I am not looking for this car");
+        }
     }
-
 
     else if (price < 10000) {
         console.log("wow,what a bargain");
     }
+
 }
 
