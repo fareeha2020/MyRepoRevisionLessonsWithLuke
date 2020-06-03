@@ -15,9 +15,9 @@ while (j <= 16) {
 console.log(" WHILE odd between 33 and 45 {reverse)");
 let i = 44;
 while (i >= 33) {
-    i--;
-    if (i % 2 == 0) {
-        continue;
+       if (i % 2 == 0) {
+        i--;
+       continue;
     }
     console.log(i);
     i--;
