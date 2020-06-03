@@ -16,10 +16,10 @@
 //     console.log("yes restaurant is open");
 // }
 //Exercise 3
-// let food1="";
-// let food2="";
-// let food3;//undefined is falsy
-// let popularFood=food1||food2||food3||"Pizza"
+let food1="";
+let food2="";
+let food3;//undefined is falsy
+let popularFood=food1||food2||food3||"Pizza"
 // console.log(popularFood);
 //EXERCISE 4 AND STATEMENT
 // let opentime = 17;
