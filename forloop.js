@@ -11,7 +11,7 @@ for (j = 10; j <= 20; j++) {
     }
 }
 
-console.log(" printing -4 to +3");
+console.log(" reverse printing -4 to +3");
 for (k = 3; k >= -4; k--) {
     console.log(k);
 }
