@@ -1,24 +1,24 @@
 let i, j, k, l;
-console.log(" printing from 3 to 8");
-for (i = 3; i <= 8; i++) {
+console.log(" printing from 2 to 6");
+for (i = 2; i <= 6; i++) {
     console.log(i);
 }
 
-console.log(" divided by 2 between 14 and 20");
-for (j = 14; j <= 20; j++) {
-    if (j % 2 == 0) {
+console.log("  odd numbers between 10 n 20 ");
+for (j = 10; j <= 20; j++) {
+    if (j % 2 == 1) {
         console.log(j);
     }
 }
 
-console.log("rev printing 12 to 7");
-for (k = 12; k >= 7; k--) {
+console.log(" printing -4 to +3");
+for (k = 3; k >= -4; k--) {
     console.log(k);
 }
 
-console.log("Divided by 3 between 33 and 45 in reverse order");
-for (l = 45; l >= 33; l--) {
-    if (l % 3 == 0) {
+console.log("multiples of 5  between 30 and 75 ");
+for (l = 30; l <= 75; l++) {
+    if (l % 5 == 0) {
         console.log(l);
     }
 }
