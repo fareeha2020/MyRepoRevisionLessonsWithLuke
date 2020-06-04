@@ -1,8 +1,8 @@
 function sayHelloInside(name) {
-    console.log(`hello ${name}`);
+    console.log(`Hello ${name}`);
 }
 function returnHelloStmt(name) {
-    return `hello ${name}`;
+    return `Hi ${name}`;
 
 }
 function logLargest(num1, num2) {
