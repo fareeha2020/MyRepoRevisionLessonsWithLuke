@@ -9,7 +9,7 @@ console.log(nameArray.find(element => element[0] == "F"));
 console.log("the first number in the numbers array that is smaller than 10");
 console.log(numArray.find(element => element < 10));
 console.log("all the names that are 4 or less characters long");
-console.log(nameArray.find(element => {
+console.log(nameArray.filter(element => {
     for (let i = 0; i < element.length; i++) {
         if (element.length < 4) {
             return element;
@@ -18,7 +18,7 @@ console.log(nameArray.find(element => {
 }
 ));
 console.log("all the numbers in the numbers array that are divisible by 3");
-console.log(numArray.find(element => {
+console.log(numArray.filter(element => {
     if (element % 3 == 0) {
         return element;
     }
@@ -32,7 +32,7 @@ if(element.age<18){
 }));
 console.log("an array of all the people that have more than 10 characters in their first and ");
 console.log("last names combined (eg. Luke Parker has exactly 10 characters and should not be included");
-console.log(people.find(element =>{
+console.log(people.filter(element =>{
     if((element.lastName.length)+(element.firstName.length)>=10)
     {
         return `${element.firstName} ${element.lastName}`;
@@ -41,7 +41,7 @@ console.log(people.find(element =>{
 }));
 
 console.log("all the people that have their last name longer than their first name");
-console.log(people.find(element =>{
+console.log(people.filter(element =>{
     if(element.lastName.length>element.firstName.length)
     {
         return `${element.firstName} ${element.lastName}`;
