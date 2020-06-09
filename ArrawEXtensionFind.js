@@ -1,8 +1,8 @@
-let nameArray = ["Fname1", "name2", "name3", "tom"];
+let nameArray = ["Fname1", "name2", "name3","tim", "tom"];
 let numArray = [1, 2, 3, 4,9];
-let people = [{ firstName: "firstname1", lastName: "lastname1", age: 20 },
+let people = [{ firstName: "Tim", lastName: "Tam", age: 10 },
 { firstName: "firstname2", lastName: "longerlastname2", age: 30 },
-{ firstName: "Luke", lastName: "Parker", age: 17 },]
+{ firstName: "Luke", lastName: "Parker", age: 27 },]
 
 console.log(" first name in the names array that starts with an F");
 console.log(nameArray.find(element => element[0] == "F"));
@@ -11,22 +11,20 @@ console.log(numArray.find(element => element < 10));
 console.log("all the names that are 4 or less characters long");
 console.log(nameArray.filter(element => {
     for (let i = 0; i < element.length; i++) {
-        if (element.length < 4) {
-            return element;
-        }
-    }
+                  return element.length<4;
+            }
 }
 ));
 console.log("all the numbers in the numbers array that are divisible by 3");
-console.log(numArray.filter(element => {
-    if (element % 3 == 0) {
-        return element;
-    }
-}));
+console.log(numArray.filter(element => element%3==0));
+
 
 console.log("the first person that is under 18 years old and log their full name");
+let person=people.find(element =>element.age<18);
+console.log(`${person.firstName} ${person.lastName}`)
+    
 console.log(people.find(element =>{
-if(element.age<18){
+    if(element.age<18){
     return `${element.firstName} ${element.lastName}`;
 }
 }));
@@ -37,14 +35,9 @@ console.log(people.filter(element =>{
     {
         return `${element.firstName} ${element.lastName}`;
     }
-
 }));
 
 console.log("all the people that have their last name longer than their first name");
-console.log(people.filter(element =>{
-    if(element.lastName.length>element.firstName.length)
-    {
-        return `${element.firstName} ${element.lastName}`;
-    }
-
-}));
+const longerLNames=people.filter(element =>(element.lastName.length>element.firstName.length));
+console.log( `${longerLNames.firstName} ${longerLNames.lastName}`);
+ 
