@@ -39,6 +39,21 @@ for (const school of schools) {
 }
 //IDEA IS TO STORE EACH INDEX in ARRAY REPRESENTS YEAR GRADE
 //THen COUNT IS INCREMENTED FOR EACH INDEX
+let yearGroupCounts = new Array(13).fill(0)
+
+for (const school of schools) {
+    for (const student of school.students) {
+        yearGroupCounts[student.yearGroup]++;
+    }
+}
+
+for (let i = 0; i < yearGroupCounts.length; i++) {
+    if (i == 0) {
+        console.log(`There are ${yearGroupCounts[i]} students in Kindergarden`);
+    } else {
+        console.log(`There are ${yearGroupCounts[i]} students in Year ${i}`);
+    }
+}
 
 console.log(" any other method you know to log how many students are in each yearGroup Across all schools (assume yearGroup is a whole number from 0 - 12");
 for (const eschool of schools) {
