@@ -16,4 +16,7 @@ let totalNetworth=bankers.reduce((currentSum,currentValue)=>currentSum+currentVa
 console.log(totalNetworth);
 let average=totalNetworth/bankers.length;
 console.log(average);
+// let average=bankers.reduce((currentSum,currentValue,Array)=>(currentSum+currentValue.netWorth)/Array.length,0);
+
+// console.log(average);
 //Then use that number to calculate the average netWorth of all the bankers.
