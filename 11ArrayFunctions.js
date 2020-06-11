@@ -113,14 +113,14 @@ console.log(numberPets);
 function sortPetsByOwnerLastName(pet1, pet2) {
 
     //as sort by owners
-    let owner1=allPetbyOwner(pet1.ownerId);
-    let owner2=allPetbyOwner(pet2.ownerId);
+    let owner1=findOwner(pet1.ownerId);
+    let owner2=findOwner(pet2.ownerId);
     // let owner1 = o1.lastName.toLowerCase();
     // let owner2 = o2.lastName.toLowerCase();
     if (owner1.lastName < owner2.lastName) {
         return -1;
     }
-    if (owner1.lastName < owner2.lastName) {
+    if (owner1.lastName > owner2.lastName) {
         return 1;
     } else
         return 0;
@@ -143,7 +143,7 @@ function sortByOwnerLastName() {
         
 }
 function sortedPetsByOwnerLastName(){
-    return pets.sort(sortPetsByOwnerLastName);//calls this function sortpets and sorts accordingly
+    return pets.sort(sortPetsByOwnerLastName).map(p=>p.name);//calls this function sortpets and sorts accordingly
 }
 let sortedOwnnerLastName = sortByOwnerLastName();
 console.log(sortedOwnnerLastName);
