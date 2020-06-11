@@ -1,14 +1,14 @@
 // Create an array called pets with the following properties: name, age, species, id, ownerId
 // Create an array called owners with the following properties: firstName, lastName, id
 
- 
+
 
 // Q1 - Write a function that returns a pet given its id
 // Q2 - Write a function that returns an owner given its id
 // Q3 - Write a function that returns the all the pets for an owner
 // Q4 - Write a function that returns the number of pets for each owner: return array should be an object with property ownerId and numberOfPets
 // Q5 - Write a function that returns all the names of the pets in order of their owner's last name
- let pets = [
+let pets = [
     {
         name: "Rex",
         age: 1,
@@ -78,7 +78,6 @@ let owners = [
 
 function findPet(byId) {
     return pets.find(p => p.id == byId);
-
 }
 let pet = findPet("604bfac3-c0e4-41c1-ad4f-69081b1c2e3e");
 console.log(pet);//hurst 1 goldfish
@@ -108,45 +107,61 @@ let numberPets = numberOfPetsByOwner();
 console.log(numberPets);
 // console.log(`${numberPets.ownerId}`);
 
-//sort pets array,sort function will always pass pet1 and pets ,as we are sorting this array
+//sort pets array,sort function will always pass pet1 and pets ,as we are sorting pets but 
 //based on names of their owners
 function sortPetsByOwnerLastName(pet1, pet2) {
-
     //as sort by owners
-    let owner1=findOwner(pet1.ownerId);
-    let owner2=findOwner(pet2.ownerId);
+    let owner1 = findOwner(pet1.ownerId);
+    let owner2 = findOwner(pet2.ownerId);
     // let owner1 = o1.lastName.toLowerCase();
     // let owner2 = o2.lastName.toLowerCase();
-    if (owner1.lastName < owner2.lastName) {
+    if (owner1.lastName.toLowerCase() < owner2.lastName.toLowerCase()) {
         return -1;
     }
-    if (owner1.lastName > owner2.lastName) {
+    if (owner1.lastName.toLowerCase() > owner2.lastName.toLowerCase()) {
         return 1;
     } else
         return 0;
 }
 
-    function ownerlastName (owner1, owner2){
-        if(owner1.lastName > owner2.lastName){
-             return 1;
-         } else if (owner2.lastName > owner1.lastName){
-             return -1;
-         } else {
-             return 0;
-         }
-      
-     }
+function ownerlastName(owner1, owner2) {
+    if (owner1.lastName.toLowerCase() > owner2.lastName.toLowerCase()) {
+        return 1;
+    } else if (owner2.lastName.toLowerCase() > owner1.lastName.toLowerCase()) {
+        return -1;
+    } else {
+        return 0;
+    }
 
+}
 
 function sortByOwnerLastName() {
-    return owners.sort(ownerlastName).map(o=>o.lastName);//just sorts by last name,so calls that function
-        
+    return owners.sort(ownerlastName).map(o => o.lastName);//just sorts by last name,so calls that function
+
 }
-function sortedPetsByOwnerLastName(){
+function sortedPetsByOwnerLastName() {
     //pets.sort(sortPetsByOwnerLastName);
-    return pets.sort(sortPetsByOwnerLastName).map(p=>p.name);//calls this function sortpets and sorts accordingly
+    return pets.sort(sortPetsByOwnerLastName).map(p => p.name);//calls this function sortpets and sorts accordingly
 }
 let sortedOwnnerLastName = sortByOwnerLastName();
 console.log(sortedOwnnerLastName);
-let sortedAllPetsButByOwnerLastName=sortedPetsByOwnerLastName();
+let sortedAllPetsButByOwnerLastName = sortedPetsByOwnerLastName();
 console.log(sortedAllPetsButByOwnerLastName);
+
+///LUKES         LUKES
+function getPetNamesSortByOwnerLastName() {
+    function sortPetsByOwnerLastName(pet1, pet2) {
+        let owner1Last = findOwner(pet1.ownerId).lastName.toLowerCase();
+        let owner2Last = findOwner(pet2.ownerId).lastName.toLowerCase();
+        if (owner1Last > owner2Last) {
+            return 1;
+        } else if (owner1Last < owner2Last) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    return pets.sort(sortPetsByOwnerLastName).map(p => p.name);
+}
+
+console.log(getPetNamesSortByOwnerLastName());

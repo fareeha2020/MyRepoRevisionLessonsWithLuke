@@ -124,6 +124,7 @@ function searchBuks(searchTerm) {
     return books.filter(termAppearsInBooksOrAuthor);
 }
 ////DAILY CHALLENGE TO SORT BY ANY FIELD 
+//// This function won't always work for numbers. Find out why and see if you can fix it!???
 
 function sortBooks(sortField) {
     function sortByField(book1, book2) {
