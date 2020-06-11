@@ -123,6 +123,7 @@ function searchBuks(searchTerm) {
 
     return books.filter(termAppearsInBooksOrAuthor);
 }
+////DAILY CHALLENGE TO SORT BY ANY FIELD 
 
 function sortBooks(sortField) {
     function sortByField(book1, book2) {
@@ -142,4 +143,5 @@ function sortBooks(sortField) {
 console.log("...LUKES SEARCH BOOK")
 console.log(searchBuks("j"));
 
-// console.log(sortBooks("title"));
+//console.log(sortBooks("title"));
+ console.log(sortBooks("yearOfPublication"));

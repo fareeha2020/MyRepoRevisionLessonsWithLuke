@@ -139,10 +139,11 @@ function sortPetsByOwnerLastName(pet1, pet2) {
 
 
 function sortByOwnerLastName() {
-    return owners.sort(ownerlastName);//just sorts by last name,so calls that function
+    return owners.sort(ownerlastName).map(o=>o.lastName);//just sorts by last name,so calls that function
         
 }
 function sortedPetsByOwnerLastName(){
+    //pets.sort(sortPetsByOwnerLastName);
     return pets.sort(sortPetsByOwnerLastName).map(p=>p.name);//calls this function sortpets and sorts accordingly
 }
 let sortedOwnnerLastName = sortByOwnerLastName();
