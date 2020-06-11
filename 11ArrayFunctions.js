@@ -1,4 +1,14 @@
-let pets = [
+// Create an array called pets with the following properties: name, age, species, id, ownerId
+// Create an array called owners with the following properties: firstName, lastName, id
+
+ 
+
+// Q1 - Write a function that returns a pet given its id
+// Q2 - Write a function that returns an owner given its id
+// Q3 - Write a function that returns the all the pets for an owner
+// Q4 - Write a function that returns the number of pets for each owner: return array should be an object with property ownerId and numberOfPets
+// Q5 - Write a function that returns all the names of the pets in order of their owner's last name
+ let pets = [
     {
         name: "Rex",
         age: 1,
