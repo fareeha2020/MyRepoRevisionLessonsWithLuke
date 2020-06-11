@@ -100,11 +100,46 @@ console.log(getBooksByAuthor("7e7354b8-59e8-4b6a-916b-70882eab6fb6"));//by autho
 console.log(getBooksByAuthor("184c518a-753f-49ce-9abb-e2e9c29fc980"));//by other author
 console.log(" The function should return all books where the title or author name contains the given string.");
 function searchBooks(searchTerm){
-    let term=searchTerm.toLowerCase();
+ let term=searchTerm.toLowerCase();
  let array1=  books.filter(b=>(b.title.includes(term)));//filtering books
-   let array2=authors.map(a=>(a.firstName.includes(term)||a.lastName.includes(term)));//
-    console.log(array1);
-   //return `${array1} ${array2}`;
+   let array2=authors.filter(a=>(a.firstName.includes(term)||a.lastName.includes(term)));//
+  let all=array1.concat(array2);
+   return all;
    }
    console.log(searchBooks("ing"));
+//    let array1=  books.filter(b=>(b.title.includes("the")));
+//    console.log(array1);
+//...........LUKES LUKES LUKES................//returns authors books by author name 
+function searchBuks(searchTerm) {
+    function termAppearsInBooksOrAuthor(book) {
+        let lowerSearchTerm = searchTerm.toLowerCase();
 
+        let author = getAuthor(book.authorId);
+        return book.title.toLowerCase().includes(lowerSearchTerm) ||
+            author.firstName.toLowerCase().includes(lowerSearchTerm) ||
+            author.lastName.toLowerCase().includes(lowerSearchTerm);
+
+    }
+
+    return books.filter(termAppearsInBooksOrAuthor);
+}
+
+function sortBooks(sortField) {
+    function sortByField(book1, book2) {
+        if (book1[sortField] > book2[sortField]) {
+            return 1;
+        } else if (book1[sortField] < book2[sortField]) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    return books
+        .sort(sortByField)
+        .map(book => book.title);
+}
+console.log("...LUKES SEARCH BOOK")
+console.log(searchBuks("j"));
+
+// console.log(sortBooks("title"));

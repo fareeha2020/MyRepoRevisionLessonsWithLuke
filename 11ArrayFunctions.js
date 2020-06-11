@@ -108,21 +108,44 @@ let numberPets = numberOfPetsByOwner();
 console.log(numberPets);
 // console.log(`${numberPets.ownerId}`);
 
+//sort pets array,sort function will always pass pet1 and pets ,as we are sorting this array
+//based on names of their owners
+function sortPetsByOwnerLastName(pet1, pet2) {
 
-function ownerLastName(o1, o2) {
-    let owner1 = o1.lastName.toLowerCase();
-    let owner2 = o2.lastName.toLowerCase();
-    if (owner1 < owner2) {
+    //as sort by owners
+    let owner1=allPetbyOwner(pet1.ownerId);
+    let owner2=allPetbyOwner(pet2.ownerId);
+    // let owner1 = o1.lastName.toLowerCase();
+    // let owner2 = o2.lastName.toLowerCase();
+    if (owner1.lastName < owner2.lastName) {
         return -1;
     }
-    if (owner1 < owner2) {
+    if (owner1.lastName < owner2.lastName) {
         return 1;
     } else
         return 0;
 }
 
+    function ownerlastName (owner1, owner2){
+        if(owner1.lastName > owner2.lastName){
+             return 1;
+         } else if (owner2.lastName > owner1.lastName){
+             return -1;
+         } else {
+             return 0;
+         }
+      
+     }
+
+
 function sortByOwnerLastName() {
-    return owners.sort(ownerLastName);
+    return owners.sort(ownerlastName);//just sorts by last name,so calls that function
+        
 }
-let sorted = sortByOwnerLastName();
-console.log(sorted);
+function sortedPetsByOwnerLastName(){
+    return pets.sort(sortPetsByOwnerLastName);//calls this function sortpets and sorts accordingly
+}
+let sortedOwnnerLastName = sortByOwnerLastName();
+console.log(sortedOwnnerLastName);
+let sortedAllPetsButByOwnerLastName=sortedPetsByOwnerLastName();
+console.log(sortedAllPetsButByOwnerLastName);
