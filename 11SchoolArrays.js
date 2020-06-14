@@ -203,9 +203,12 @@ function getClassById(classId) {
 console.log(getClassById("3fc0fb62-fd0a-4fd8-9be8-4ee61f622265"));//Morning slot of teacher
 console.log("getTeacherById which takes a parameter called classId and returns the teacher for that class");
 function getTeacherByClassId(classId) {
-    let classObject = getClassById(classId);
-    let teacherObject = getTeacherById(classObject.teacherId);
-    return teacherObject;
+    let classObject=classes.find(c=>c.id==classId);
+    let teacherId=classObject.teacherId;
+    //let classObject = getClassById(classId);
+    //let teacherObject = getTeacherById(classObject.teacherId);
+ 
+    return getTeacherById(teacherId);
 
 }
 let teacher = getTeacherByClassId("3fc0fb62-fd0a-4fd8-9be8-4ee61f622265");//class ID of tecaher Raheel
@@ -242,7 +245,7 @@ console.log(getSubjectsForStudent("46d4e75f-6e00-4343-a1bb-9e9339ec7e39"))
 console.log("getTeacherSchedule  teacherId and returns an object with a property morningTimeslot and another property called eveningTimeslot. Each proprety should be an array of all the students in that class.");
 function getTeacherSchedule(teacherId){
        let obj={morningTimeSlot:[],eveningTimeslot:[]};
- let classObjects=classes.filter(c=>c.teacherId==teacherId);
+ let classObjects=classes.filter(c=>c.teacherId==teacherId);//can say && timeslot is' morning' ,CAN CHECK BOTH CONDITIONS HERE,but use find as one teacher can take 1 morningCLass not 2 morningclasses at the same time
   let morning= classObjects.filter(c=>c.timeslot=='morning');
 let evening= classObjects.filter(c=>c.timeslot=='afternoon');
 let morningStudentsClsId=morning.map(s=>s.id);
@@ -254,20 +257,50 @@ let eveningStudentsClsId=evening.map(s=>s.id);
 return obj;
 }
 console.log(getTeacherSchedule("6ee455cc-ed20-47f7-91b7-f89b08e9dae1"));//has 1 timeslot
-//console.log(getTeacherSchedule( "dd798187-7880-4294-aa51-cc9ed0bc7779"));//has 2 time slots 
-// Q8 -
+console.log(getTeacherSchedule( "dd798187-7880-4294-aa51-cc9ed0bc7779"));//has 2 time slots 
+//Q8 -
 console.log("getStudentSchedule which takes a parameter called studentId and returns an object with a property morningTimeslot and another property called eveningTimeslot. Each property be an object with teacherName which should be the title of the teacher plus their name and subject which should be the subject of that class");
-function getStudentSchedule(studentId){
-   // let obj={morningTimeSlot:{teacherName,subject},eveningTimeslot:{teacherName,subject}};
-    let allclassesId=studentClasses.filter(sc=>sc.studentId==studentId);
-    let classesByIds=allclassesId.map(c=>getClassById(c.classId));//getting classes object of all classId's returned by our studentId
-   let allTeachers=classesByIds.map(id=> getTeacherByClassId(id));
-   console.log(classesByIds);
-   console.log(allTeachers);
-   //onlyClassIds.map()
+// function getStudentSchedule(studentId){
+//    // let obj={morningTimeSlot:{teacherName,subject},eveningTimeslot:{teacherName,subject}};
+//     let allclassesId=studentClasses.filter(sc=>sc.studentId==studentId);
+//     let classesByIds=allclassesId.map(c=>getClassById(c.classId));//getting classes object of all classId's returned by our studentId
+//    let allTeachers=classesByIds.map(id=> getTeacherByClassId(id));
+//    console.log(classesByIds);
+//    console.log(allTeachers);
+//    //onlyClassIds.map()
 
     
-}
-getStudentSchedule("ae025246-b36b-46cb-9de7-d52e46b4a6f7");
+// }
+// getStudentSchedule("ae025246-b36b-46cb-9de7-d52e46b4a6f7");
 
-// Q9 -  called doesTeach which takes 2 parameters, teacherId and studentId. The function should return true if the student is in any of the teacher's classes or false otherwise.
+// Q9 -  called doesTeach which takes 2 parameters, teacherId and studentId. 
+console.log("The function should return true if the student is in any of the teacher's classes or false otherwise.");
+function doesTeach(studentId,teacherId){
+    let teacherClasdIds=classes.filter(c=>c.teacherId==teacherId);//return classId's of matching Teachers'Id
+    let cid=teacherClasdIds.map(c=>c.id);
+    //console.log(cid);
+   let st=getStudentsInClass(cid);
+
+   console.log(st);
+let res=st.find(s=>s.id!=studentId);
+console.log(res)
+//    if(s.find(s.id==studentId)){
+//        return true;
+//    }else{
+//        return false;
+//    }
+    //let studentIdss=studentClasses.find(sc=>sc.classId==teacherClasdIds).map()
+//let teachers=getTeacherById(teacherId);
+  
+}
+
+function doesTeach1(studentId,teacherId){
+    return studentClasses.filter(sc=>sc.studentId==studentId)
+    .map(sc=>sc.classId)
+    .map(id=>getClassById(id))
+    .some(e=>e.teacherId==teacherId);
+}
+
+console.log(doesTeach1("f332c68b-f0ce-4e7a-9c27-2d51a92e94d0","948c3641-f95d-483b-8c59-b84c27041313"));
+console.log(doesTeach1("f332c68b-f0ce-4e7a-9c27-2d51a92e94d0","6ee455cc-ed20-47f7-91b7-f89b08e9dae1"));;
+//console.log(doesTeach("46d4e75f-6e00-4343-a1bb-9e9339ec7e39","3fc0fb62-fd0a-4fd8-9be8-4ee61f622265"));
